@@ -1,21 +1,21 @@
-// 5. Посчитать количество делителей числа.
+// 5. РџРѕСЃС‡РёС‚Р°С‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ РґРµР»РёС‚РµР»РµР№ С‡РёСЃР»Р°.
 #include <iostream>
 using namespace std;
 int main()
 {
-	int n = 0, k = 1;
+	int n = 0, k=0;
 	cin >> n;
-	while (n > 1)
+	for (int i = 1; i <= sqrt(n); ++i)
 	{
-		for (int i = 2; true; ++i)
+		if (n % i == 0)
 		{
-			if (n % i == 0)
-			{
-				n /= i;
-				k++;
-				break;
-			}
+			k++;
 		}
+	}
+	k *= 2;
+	if (sqrt(n) * sqrt(n) == n)
+	{
+		--k;
 	}
 	cout << k;
 	return 0;
