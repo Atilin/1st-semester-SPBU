@@ -1,10 +1,14 @@
-// Посчитать целую степень числа
 #include <iostream>
 using namespace std;
 int main()
 {
-	int a, b;
-	cin >> a >> b;
-	cout << pow(a, b);
+	int n = 0, k = 0;
+	cin >> n >> k;
+	int stepenN = 1;
+	for (int i = 0; i < k; ++i)
+	{
+		stepenN *= n;
+	}
+	cout << stepenN;
 	return 0;
 }
