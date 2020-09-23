@@ -1,9 +1,9 @@
-// 5. РџРѕСЃС‡РёС‚Р°С‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ РґРµР»РёС‚РµР»РµР№ С‡РёСЃР»Р°.
+// 5. Посчитать количество делителей числа.
 #include <iostream>
 using namespace std;
 int main()
 {
-	int n = 0, k=0;
+	int n = 0, k = 0;
 	cin >> n;
 	for (int i = 1; i <= sqrt(n); ++i)
 	{
@@ -13,7 +13,8 @@ int main()
 		}
 	}
 	k *= 2;
-	if (sqrt(n) * sqrt(n) == n)
+	int zatichka = sqrt(n);
+	if (zatichka * zatichka == n)
 	{
 		--k;
 	}
