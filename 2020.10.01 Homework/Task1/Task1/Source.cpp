@@ -140,7 +140,7 @@ int main()
 	int count = 0;
 	while (true)
 	{
-		long long x = 0;
+		int x = 0;
 		cin >> x;
 		if (x == 0)
 		{
