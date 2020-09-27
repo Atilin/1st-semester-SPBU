@@ -1,6 +1,5 @@
 #include <iostream>
 #include <clocale>
-#include <algorithm>
 using namespace std;
 
 void expandArray(int*& a, int& cap, int& count)
@@ -8,7 +7,7 @@ void expandArray(int*& a, int& cap, int& count)
 	if (count == cap)
 	{
 		cap += 10;
-		int* temp = new int[cap];
+		int* temp = new int[cap] {0};
 		for (int i = 0; i < count; ++i)
 		{
 			temp[i] = a[i];
@@ -20,9 +19,16 @@ void expandArray(int*& a, int& cap, int& count)
 
 void outArray(int*& a, int& count)
 {
-	for (int i = 0; i < count; ++i)
+	if (count == 0)
 	{
-		cout << a[i] << ' ';
+		cout << "EMPTY";
+	}
+	else
+	{
+		for (int i = 0; i < count; ++i)
+		{
+			cout << a[i] << ' ';
+		}
 	}
 	cout << endl << endl;
 }
@@ -33,8 +39,8 @@ void menu()
 	cout << "1 - Добавить в массив n случайных чисел в промежутке от a до b\n";
 	cout << "2 - Развернуть массив\n";
 	cout << "3 - Поменять элементы массива местами в парах.Если число элементов нечетно, последний элемент остается на своем месте\n";
-	cout << "4 - Циклический сдвиг вправо на 1";
-	cout << "5 - Развернуть две половинки массива. n - индекс элемента, разделяющего половинки\n";
+	cout << "4 - Циклический сдвиг вправо на 1\n";
+	cout << "5 - Развернуть две половинки массива. n - номер элемента, разделяющего половинки\n";
 	cout << "6 - Вывод массива\n";
 	cout << "Введите цифру интересующей вас функции\n\n";
 }
@@ -52,27 +58,28 @@ void addRandNumbers(int*& a, int& cap, int& count)
 	cin >> r;
 	for (int i = 0; i < n; ++i)
 	{
-		expandArray(count, cap, a);
+		expandArray(a, cap, count);
 		a[count] = rand() % (r - l + 1) + l;
 		++count;
 	}
 }
 
-void reverseArray(int*& a, int& cap, int& count)
+void reverseArray(int*& a, int& count) //без передачи массива не знаю как сделать
 {
-	int k = count - 1;
-	int* temp = new int[cap];
-	for (int i = 0; i < count; ++i, --k)
+	int j = count - 1;
+	for (int i = 0; i < count / 2; ++i)
 	{
-		temp[k] = a[i];
+		int x = 0;
+		x = a[i];
+		a[i] = a[j];
+		a[j] = x;
+		--j;
 	}
-	delete[] a;
-	a = temp;
 }
 
 void swapElements(int*& a, int& count)
 {
-	for (int i = 0; i < count - 1; i += 2)
+	for (int i = 0; i < count / 2 * 2; i += 2)
 	{
 		int x = 0;
 		x = a[i];
@@ -83,36 +90,38 @@ void swapElements(int*& a, int& count)
 
 void shiftBy1(int*& a, int& cap, int& count)
 {
-	int* temp = new int[cap];
-	temp[0] = a[count - 1];
-	for (int i = 0; i < count - 1; ++i)
+	int x = 0;
+	x = a[count - 1];
+	for (int i = count - 1; i > 0; --i)
 	{
-		temp[i + 1] = a[i];
+		a[i] = a[i - 1];
 	}
-	delete[] a;
-	a = temp;
+	a[0] = x;
 }
 
 void reverseHalf(int*& a, int& cap, int& count)
 {
+	cout << "Введите 'n'\n";
 	int n = 0;
 	cin >> n;
-	--n;
-	int* temp = new int[cap];
-	for (int i = 0; i < count; ++i)
+	int j = n - 1;
+	for (int i = 0; i < n / 2; ++i)
 	{
-		if (n >= 0)
-		{
-			temp[n] = a[i];
-			--n;
-		}
-		if (n < 0)
-		{
-			n = count - 1;
-		}
+		int x = 0;
+		x = a[i];
+		a[i] = a[j];
+		a[j] = x;
+		--j;
 	}
-	delete[] a;
-	a = temp;
+	j = count - 1;
+	for (int i = n; i < n + (count - n) / 2; ++i)
+	{
+		int x = 0;
+		x = a[i];
+		a[i] = a[j];
+		a[j] = x;
+		--j;
+	}
 }
 
 void check(int*& a, int& cap, int& count, int& choice)
@@ -131,7 +140,7 @@ void check(int*& a, int& cap, int& count, int& choice)
 	}
 	case 2:
 	{
-		reverseArray(a, cap, count);
+		reverseArray(a, count);
 		break;
 	}
 	case 3:
@@ -161,7 +170,7 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	int cap = 10;
-	int* a = new int[cap];
+	int* a = new int[cap] {0};
 	cout << "Введите элементы массива, завершите ввод элементом '0'\n\n";
 	int count = 0;
 	while (true)
@@ -175,15 +184,15 @@ int main()
 		expandArray(a, cap, count);
 		a[count] = x;
 		count++;
-		cout << endl << endl;
-		int choice = -1;
-		while (choice != 0)
-		{
-			menu();
-			cin >> choice;
-			check(a, cap, count, choice);
-		}
-		delete[] a;
-		return 0;
 	}
+	cout << endl << endl;
+	int choice = -1;
+	while (choice != 0)
+	{
+		menu();
+		cin >> choice;
+		check(a, cap, count, choice);
+	}
+	delete[] a;
+	return 0;
 }
