@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{6F231136-B0B9-4EB7-89A9-97C2A980EE64}</ProjectGuid>
+    <ProjectGuid>{AE7B8145-4C9E-42F3-BF06-F182DE60AB9E}</ProjectGuid>
     <RootNamespace>Task2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
