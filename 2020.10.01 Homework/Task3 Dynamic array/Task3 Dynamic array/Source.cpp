@@ -1,27 +1,25 @@
 #include <iostream>
-#include <algorithm>
+#include <clocale>
 using namespace std;
 
-void expandArray(int count, int& cap, int*& a)
+void expandArray(int*& a, int& cap, int& count)
 {
-	if (count == cap)
+	cap += 10;
+	int* temp = new int[cap] {0};
+	for (int i = 0; i < count; ++i)
 	{
-		cap += 10;
-		int* temp = new int[cap];
-		for (int i = 0; i < count; ++i)
-		{
-			temp[i] = a[i];
-		}
-		delete[] a;
-		a = temp;
+		temp[i] = a[i];
 	}
+	delete[] a;
+	a = temp;
 }
 
 int main()
 {
+	setlocale(LC_ALL, "Russian");
 	int cap = 10;
 	int* a = new int[cap];
-	cout << "Введите последовательность чисел, завершите ее нулем";
+	cout << "Введите последовательность чисел, завершите ее нулем\n\n";
 	int count = 0;
 	while (true)
 	{
@@ -31,24 +29,25 @@ int main()
 		{
 			break;
 		}
-		expandArray(count, cap, a);
+		if (count == cap)
+		{
+			expandArray(a, cap, count);
+		}
 		a[count] = x;
 		++count;
 	}
 	cout << endl;
-	sort(a[0], a[count - 1]);
-	int multiplication = 1;
-	int sum = 0;
-	int j = 0;
-	for (int i = 1; i <= a[count - 1]; ++i)
+	double sum = 0;
+	for (int i = 0; i < count; ++i)
 	{
-		multiplication *= i;
-		while (i == a[j])
+		int x = 1;
+		for (int j = 2; j <= a[i]; ++j)
 		{
-			sum += multiplication;
-			++j;
+			x *= j;
 		}
+		sum += x;
 	}
-	cout << sum / count;
+	cout << sum/count;
+	delete[] a;
 	return 0;
 }
