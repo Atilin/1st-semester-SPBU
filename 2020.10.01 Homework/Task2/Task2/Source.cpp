@@ -4,17 +4,14 @@ using namespace std;
 
 void expandArray(int*& a, int& cap, int& count)
 {
-	if (count == cap)
+	cap += 10;
+	int* temp = new int[cap] {0};
+	for (int i = 0; i < count; ++i)
 	{
-		cap += 10;
-		int* temp = new int[cap] {0};
-		for (int i = 0; i < count; ++i)
-		{
-			temp[i] = a[i];
-		}
-		delete[] a;
-		a = temp;
+		temp[i] = a[i];
 	}
+	delete[] a;
+	a = temp;
 }
 
 void outArray(int*& a, int& count)
@@ -58,7 +55,10 @@ void addRandNumbers(int*& a, int& cap, int& count)
 	cin >> r;
 	for (int i = 0; i < n; ++i)
 	{
-		expandArray(a, cap, count);
+		if (cap == count)
+		{
+			expandArray(a, cap, count);
+		}
 		a[count] = rand() % (r - l + 1) + l;
 		++count;
 	}
@@ -181,7 +181,10 @@ int main()
 		{
 			break;
 		}
-		expandArray(a, cap, count);
+		if (cap == count)
+		{
+			expandArray(a, cap, count);
+		}
 		a[count] = x;
 		count++;
 	}
