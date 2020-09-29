@@ -105,19 +105,19 @@ void check(int*& a, int& cap, int& count, int choice)
 	case 3:
 	{
 		cout << "Номер максимального элемента массива равен ";
-		indxMaxElement(a, count);
+		cout << indxMaxElement(a, count) << endl;
 		break;
 	}
 	case 4:
 	{
 		cout << "Минимальный элемент массива равен ";
-		minElement(a, count);
+		cout << minElement(a, count) << endl;
 		break;
 	}
 	case 5:
 	{
 		cout << "Сумма элементов массива равна ";
-		sum(a, count);
+		cout << sum(a, count) << endl;
 		break;
 	}
 	case 6:
