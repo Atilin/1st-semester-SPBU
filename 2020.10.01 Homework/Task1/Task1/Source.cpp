@@ -2,11 +2,11 @@
 #include <clocale>
 using namespace std;
 
-void expandArray(int*& a, int& cap, int count)
+void expandArray(int*& a, int& cap)
 {
 	cap += 10;
-	int* temp = new int[cap];
-	for (int i = 0; i < count; ++i) // без count придется идти до cap, а это не очень хорошо
+	int* temp = new int[cap] {0};
+	for (int i = 0; i < cap; ++i)
 	{
 		temp[i] = a[i];
 	}
@@ -21,7 +21,7 @@ void addNumber(int*& a, int& cap, int& count)
 	cout << endl;
 	if (cap == count)
 	{
-		expandArray(a, cap, count);
+		expandArray(a, cap);
 	}
 	a[count] = x;
 	count++;
@@ -36,22 +36,20 @@ void outArray(int* a, int count)
 	cout << endl;
 }
 
-int indxMaxElement(int* a, int count) //11 строчек обусловлены тем, что нам нужно хранить и максимальный элемент и его индекс, который и нужно вывести
+int indxMaxElement(int* a, int count)
 {
-	int maximum = INT_MIN;
-	int indxMax = -1;
-	for (int i = 0; i < count; ++i)
+	int result = 0;
+	for (int i = 1; i < count; ++i)
 	{
-		if (a[i] > maximum)
+		if (a[i] > a[result])
 		{
-			maximum = a[i];
-			indxMax = i;
+			result = i;
 		}
 	}
-	return indxMax + 1;
+	return result;
 }
 
-int minElement(int* a, int count) // тут все хорошо, 9 строк
+int minElement(int* a, int count)
 {
 	int minimum = INT_MAX;
 	for (int i = 0; i < count; ++i)
@@ -135,7 +133,7 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	int cap = 10;
-	int* a = new int[cap];
+	int* a = new int[cap] {0};
 	cout << "Введите элементы массива, завершите ввод элементом '0'\n\n";
 	int count = 0;
 	while (true)
@@ -148,7 +146,7 @@ int main()
 		}
 		if (count == cap)
 		{
-			expandArray(a, cap, count);
+			expandArray(a, cap);
 		}
 		a[count] = x;
 		count++;
