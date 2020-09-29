@@ -2,35 +2,33 @@
 #include <clocale>
 using namespace std;
 
-void expandArray(int count, int& cap, int*& a)
+void expandArray(int*& a, int& cap, int count)
 {
-	if (count == cap)
+	cap += 10;
+	int* temp = new int[cap];
+	for (int i = 0; i < count; ++i) // без count придется идти до cap, а это не очень хорошо
 	{
-		cap *= 2;
-		int* temp = new int[cap];
-		for (int i = 0; i < count; ++i)
-		{
-			temp[i] = a[i];
-		}
-		delete[] a;
-		a = temp;
+		temp[i] = a[i];
 	}
+	delete[] a;
+	a = temp;
 }
 
-void addNumber(int& count, int& cap, int*& a)
+void addNumber(int*& a, int& cap, int& count)
 {
-	cout << "Введите число, которое хотите добавить\n\n";
 	int x = 0;
 	cin >> x;
 	cout << endl;
-	expandArray(count, cap, a);
+	if (cap == count)
+	{
+		expandArray(a, cap, count);
+	}
 	a[count] = x;
 	count++;
 }
 
-void outArray(int count, int*& a)
+void outArray(int* a, int count)
 {
-	cout << "Массив а содержит следующие числа: ";
 	for (int i = 0; i < count; ++i)
 	{
 		cout << a[i] << ' ';
@@ -38,9 +36,8 @@ void outArray(int count, int*& a)
 	cout << endl;
 }
 
-void indxMaxElement(int count, int*& a)
+int indxMaxElement(int* a, int count) //11 строчек обусловлены тем, что нам нужно хранить и максимальный элемент и его индекс, который и нужно вывести
 {
-	cout << "Номер максимального элемента массива равен ";
 	int maximum = INT_MIN;
 	int indxMax = -1;
 	for (int i = 0; i < count; ++i)
@@ -51,12 +48,11 @@ void indxMaxElement(int count, int*& a)
 			indxMax = i;
 		}
 	}
-	cout << indxMax + 1 << endl << endl;
+	return indxMax + 1;
 }
 
-void minElement(int count, int*& a)
+int minElement(int* a, int count) // тут все хорошо, 9 строк
 {
-	cout << "Минимальный элемент массива равен ";
 	int minimum = INT_MAX;
 	for (int i = 0; i < count; ++i)
 	{
@@ -65,23 +61,21 @@ void minElement(int count, int*& a)
 			minimum = a[i];
 		}
 	}
-	cout << minimum << endl << endl;
+	return minimum;
 }
 
-void sum(int count, int*& a)
+int sum(int* a, int count)
 {
-	cout << "Сумма элементов массива равна ";
 	int sum = 0;
 	for (int i = 0; i < count; ++i)
 	{
 		sum += a[i];
 	}
-	cout << sum << endl << endl;
+	return sum;
 }
 
-void reverseArray(int count, int*& a)
+void reverseArray(int* a, int count)
 {
-	cout << "Массив в обратном порядке: ";
 	for (int i = count - 1; i >= 0; --i)
 	{
 		cout << a[i] << ' ';
@@ -89,7 +83,7 @@ void reverseArray(int count, int*& a)
 	cout << endl << endl;
 }
 
-void check(int*& a, int& count, int choice, int& cap)
+void check(int*& a, int& cap, int& count, int choice)
 {
 	switch (choice)
 	{
@@ -100,32 +94,38 @@ void check(int*& a, int& count, int choice, int& cap)
 	}
 	case 1:
 	{
-		addNumber(count, cap, *&a);
+		cout << "Введите число, которое хотите добавить\n\n";
+		addNumber(a, cap, count);
 		break;
 	}
 	case 2:
 	{
-		outArray(count, *&a);
+		cout << "Массив а содержит следующие числа: ";
+		outArray(a, count);
 		break;
 	}
 	case 3:
 	{
-		indxMaxElement(count, *&a);
+		cout << "Номер максимального элемента массива равен ";
+		indxMaxElement(a, count);
 		break;
 	}
 	case 4:
 	{
-		minElement(count, *&a);
+		cout << "Минимальный элемент массива равен ";
+		minElement(a, count);
 		break;
 	}
 	case 5:
 	{
-		sum(count, *&a);
+		cout << "Сумма элементов массива равна ";
+		sum(a, count);
 		break;
 	}
 	case 6:
 	{
-		reverseArray(count, *&a);
+		cout << "Массив в обратном порядке: ";
+		reverseArray(a, count);
 		break;
 	}
 	}
@@ -146,7 +146,10 @@ int main()
 		{
 			break;
 		}
-		expandArray(count, cap, a);
+		if (count == cap)
+		{
+			expandArray(a, cap, count);
+		}
 		a[count] = x;
 		count++;
 	}
@@ -157,7 +160,7 @@ int main()
 		cout << "0 - Выход из программы \n1 - Добавить число в массив \n2 - Вывести массив на экран \n3 - Найти номер максимального элемента массива \n4 - Найти минимальный элемент массива \n5 - Посчитать сумму элементов массива \n6 - Вывести массив в обратном порядке\n";
 		cout << "Введите цифру интересующей Вас функции\n\n";
 		cin >> choice;
-		check(*&a, count, choice, cap);
+		check(a, cap, count, choice);
 	}
 	delete[] a;
 	return 0;
