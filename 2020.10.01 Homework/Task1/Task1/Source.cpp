@@ -51,8 +51,8 @@ int indxMaxElement(int* a, int count)
 
 int minElement(int* a, int count)
 {
-	int minimum = INT_MAX;
-	for (int i = 0; i < count; ++i)
+	int minimum = a[0];
+	for (int i = 1; i < count; ++i)
 	{
 		if (a[i] < minimum)
 		{
