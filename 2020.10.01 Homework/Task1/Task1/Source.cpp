@@ -2,6 +2,19 @@
 #include <clocale>
 using namespace std;
 
+void menu()
+{
+	cout << "0 - Выход из программы \n";
+	cout << "1 - Добавить число в массив \n";
+	cout << "2 - Вывести массив на экран \n";
+	cout << "3 - Найти номер максимального элемента массива \n";
+	cout << "4 - Найти минимальный элемент массива \n";
+	cout << "5 - Посчитать сумму элементов массива \n";
+	cout << "6 - Вывести массив в обратном порядке\n";
+	cout << "7 - Ввести массив\n";
+	cout << "Введите цифру интересующей Вас функции\n\n";
+}
+
 void expandArray(int*& a, int& cap)
 {
 	cap += 10;
@@ -14,11 +27,8 @@ void expandArray(int*& a, int& cap)
 	a = temp;
 }
 
-void addNumber(int*& a, int& cap, int& count)
+void addNumber(int*& a, int& cap, int& count, int x)
 {
-	int x = 0;
-	cin >> x;
-	cout << endl;
 	if (cap == count)
 	{
 		expandArray(a, cap);
@@ -81,6 +91,20 @@ void reverseArray(int* a, int count)
 	cout << endl << endl;
 }
 
+void cinArray(int*& a, int& cap, int& count)
+{
+	while (true)
+	{
+		int x = 0;
+		cin >> x;
+		if (x == 0)
+		{
+			break;
+		}
+		addNumber(a, cap, count, x);
+	}
+}
+
 void check(int*& a, int& cap, int& count, int choice)
 {
 	switch (choice)
@@ -93,7 +117,10 @@ void check(int*& a, int& cap, int& count, int choice)
 	case 1:
 	{
 		cout << "Введите число, которое хотите добавить\n\n";
-		addNumber(a, cap, count);
+		int x = 0;
+		cin >> x;
+		addNumber(a, cap, count, x);
+		cout << endl;
 		break;
 	}
 	case 2:
@@ -126,6 +153,11 @@ void check(int*& a, int& cap, int& count, int choice)
 		reverseArray(a, count);
 		break;
 	}
+	case 7:
+	{
+		cout << "Введите массив, завершите ввод нулем\n\n";
+		cinArray(a, cap, count);
+	}
 	}
 }
 
@@ -134,29 +166,11 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	int cap = 10;
 	int* a = new int[cap] {0};
-	cout << "Введите элементы массива, завершите ввод элементом '0'\n\n";
 	int count = 0;
-	while (true)
-	{
-		int x = 0;
-		cin >> x;
-		if (x == 0)
-		{
-			break;
-		}
-		if (count == cap)
-		{
-			expandArray(a, cap);
-		}
-		a[count] = x;
-		count++;
-	}
-	cout << endl;
 	int choice = -1;
 	while (choice != 0)
 	{
-		cout << "0 - Выход из программы \n1 - Добавить число в массив \n2 - Вывести массив на экран \n3 - Найти номер максимального элемента массива \n4 - Найти минимальный элемент массива \n5 - Посчитать сумму элементов массива \n6 - Вывести массив в обратном порядке\n";
-		cout << "Введите цифру интересующей Вас функции\n\n";
+		menu();
 		cin >> choice;
 		check(a, cap, count, choice);
 	}
