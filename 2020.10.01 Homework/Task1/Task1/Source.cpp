@@ -17,14 +17,15 @@ void menu()
 
 void expandArray(int*& a, int& cap)
 {
-	cap += 10;
-	int* temp = new int[cap] {0};
+	int newcap = cap + 10;
+	int* temp = new int[newcap] {0};
 	for (int i = 0; i < cap; ++i)
 	{
 		temp[i] = a[i];
 	}
 	delete[] a;
 	a = temp;
+	cap = newcap;
 }
 
 void addNumber(int*& a, int& cap, int& count, int x)

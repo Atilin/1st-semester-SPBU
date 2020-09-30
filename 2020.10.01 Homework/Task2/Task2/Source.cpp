@@ -2,16 +2,27 @@
 #include <clocale>
 using namespace std;
 
-void expandArray(int*& a, int& cap, int& count)
+void expandArray(int*& a, int& cap)
 {
-	cap += 10;
-	int* temp = new int[cap] {0};
-	for (int i = 0; i < count; ++i)
+	int newcap = cap + 10;
+	int* temp = new int[newcap] {0};
+	for (int i = 0; i < cap; ++i)
 	{
 		temp[i] = a[i];
 	}
 	delete[] a;
 	a = temp;
+	cap = newcap;
+}
+
+void addNumber(int*& a, int& cap, int& count, int x)
+{
+	if (cap == count)
+	{
+		expandArray(a, cap);
+	}
+	a[count] = x;
+	count++;
 }
 
 void outArray(int*& a, int& count)
@@ -39,25 +50,17 @@ void menu()
 	cout << "4 - Циклический сдвиг вправо на 1\n";
 	cout << "5 - Развернуть две половинки массива. n - номер элемента, разделяющего половинки\n";
 	cout << "6 - Вывод массива\n";
+	cout << "7 - Ввести массив\n";
 	cout << "Введите цифру интересующей вас функции\n\n";
 }
 
-void addRandNumbers(int*& a, int& cap, int& count)
+void addRandNumbers(int*& a, int& cap, int& count, int n, int r, int l)
 {
-	int l = 0;
-	int r = 0;
-	int n = 0;
-	cout << "Сколько случайных чисел вы хотите ввести?\n";
-	cin >> n;
-	cout << "Чему может равняться наименьший элемент?\n";
-	cin >> l;
-	cout << "Чему может равняться наибольший элемент?\n";
-	cin >> r;
 	for (int i = 0; i < n; ++i)
 	{
 		if (cap == count)
 		{
-			expandArray(a, cap, count);
+			expandArray(a, cap);
 		}
 		a[count] = rand() % (r - l + 1) + l;
 		++count;
@@ -124,6 +127,20 @@ void reverseHalf(int*& a, int& cap, int& count)
 	}
 }
 
+void cinArray(int*& a, int& cap, int& count)
+{
+	while (true)
+	{
+		int x = 0;
+		cin >> x;
+		if (x == 0)
+		{
+			break;
+		}
+		addNumber(a, cap, count, x);
+	}
+}
+
 void check(int*& a, int& cap, int& count, int& choice)
 {
 	switch (choice)
@@ -135,7 +152,16 @@ void check(int*& a, int& cap, int& count, int& choice)
 	}
 	case 1:
 	{
-		addRandNumbers(a, cap, count);
+		int l = 0;
+		int r = 0;
+		int n = 0;
+		cout << "Сколько случайных чисел вы хотите ввести?\n";
+		cin >> n;
+		cout << "Чему может равняться наименьший элемент?\n";
+		cin >> l;
+		cout << "Чему может равняться наибольший элемент?\n";
+		cin >> r;
+		addRandNumbers(a, cap, count, n, r, l);
 		break;
 	}
 	case 2:
@@ -163,6 +189,11 @@ void check(int*& a, int& cap, int& count, int& choice)
 		outArray(a, count);
 		break;
 	}
+	case 7:
+	{
+		cout << "Введите массив, завершите ввод нулем\n\n";
+		cinArray(a, cap, count);
+	}
 	}
 }
 
@@ -171,24 +202,7 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	int cap = 10;
 	int* a = new int[cap] {0};
-	cout << "Введите элементы массива, завершите ввод элементом '0'\n\n";
 	int count = 0;
-	while (true)
-	{
-		int x = 0;
-		cin >> x;
-		if (x == 0)
-		{
-			break;
-		}
-		if (cap == count)
-		{
-			expandArray(a, cap, count);
-		}
-		a[count] = x;
-		count++;
-	}
-	cout << endl << endl;
 	int choice = -1;
 	while (choice != 0)
 	{
