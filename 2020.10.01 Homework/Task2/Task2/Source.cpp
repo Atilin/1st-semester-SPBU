@@ -102,12 +102,10 @@ void shiftBy1(int*& a, int& cap, int& count)
 	a[0] = x;
 }
 
-void reverseHalf(int*& a, int& cap, int& count)
+void reverseHalf(int*& a, int& cap, int& count, int n)
 {
-	cout << "Введите 'n'\n";
-	int n = 0;
-	cin >> n;
-	int j = n - 1;
+	int j = 0;
+	j = n - 1;
 	for (int i = 0; i < n / 2; ++i)
 	{
 		int x = 0;
@@ -181,7 +179,10 @@ void check(int*& a, int& cap, int& count, int& choice)
 	}
 	case 5:
 	{
-		reverseHalf(a, cap, count);
+		cout << "Введите 'n'\n";
+		int n = 0;
+		cin >> n;
+		reverseHalf(a, cap, count, n);
 		break;
 	}
 	case 6:
