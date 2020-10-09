@@ -4,7 +4,7 @@ using namespace std;
 
 ArrayList::ArrayList()
 {
-	printf("Default constructor call\n");
+	//printf("Default constructor call\n");
 	capacity = 10;
 	count = 0;
 	data = new int[10];
@@ -12,7 +12,7 @@ ArrayList::ArrayList()
 
 ArrayList::ArrayList(int capacity)
 {
-	printf("Parametrized constructor call\n");
+	//printf("Parametrized constructor call\n");
 	capacity = capacity;
 	count = 0;
 	data = new int[capacity];
@@ -20,7 +20,7 @@ ArrayList::ArrayList(int capacity)
 
 ArrayList::~ArrayList()
 {
-	printf("Destructor call %d\n", capacity);
+	//printf("Destructor call %d\n", capacity);
 	delete[] data;
 }
 
@@ -40,10 +40,10 @@ bool ArrayList::isEmpty()
 {
 	if (count == 0)
 	{
-		cout << "Ìàññèâ ïóñò\n";
+		cout << "ÐœÐ°ÑÑÐ¸Ð² Ð¿ÑƒÑÑ‚\n";
 		return true;
 	}
-	cout << "Ìàññèâ íå ïóñò\n";
+	cout << "ÐœÐ°ÑÑÐ¸Ð² Ð½Ðµ Ð¿ÑƒÑÑ‚\n";
 	return false;
 }
 
@@ -68,12 +68,12 @@ bool ArrayList::remove(int index)
 {
 	if (count == 0)
 	{
-		cout << "Íå÷åãî óäàëÿòü\n";
+		cout << "ÐÐµÑ‡ÐµÐ³Ð¾ ÑƒÐ´Ð°Ð»ÑÑ‚ÑŒ\n";
 		return false;
 	}
 	if (index < 0 || index >= count)
 	{
-		cout << "Ââåäåí íåêîððåêòíûé èíäåêñ\n";
+		cout << "Ð’Ð²ÐµÐ´ÐµÐ½ Ð½ÐµÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ñ‹Ð¹ Ð¸Ð½Ð´ÐµÐºÑ\n";
 		return false;
 	}
 	for (int i = index + 1; i < count; ++i)
@@ -89,7 +89,7 @@ int ArrayList::swap(int index1, int index2)
 {
 	if (index1 < 0 || index1 >= count || index2 < 0 || index2 >= count)
 	{
-		cout << "Ââåäåí íåêîððåêòíûé èíäåêñ\n";
+		cout << "Ð’Ð²ÐµÐ´ÐµÐ½ Ð½ÐµÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ñ‹Ð¹ Ð¸Ð½Ð´ÐµÐºÑ\n";
 		return false;
 	}
 	int x = 0;
@@ -115,7 +115,7 @@ bool ArrayList::add(int index, int element)
 
 	if (index < 0 || index > count)
 	{
-		cout << "Ââåäåí íåêîððåêòíûé èíäåêñ\n";
+		cout << "Ð’Ð²ÐµÐ´ÐµÐ½ Ð½ÐµÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ñ‹Ð¹ Ð¸Ð½Ð´ÐµÐºÑ\n";
 		return false;
 	}
 	for (int i = count; i > index; --i)
@@ -131,7 +131,7 @@ bool ArrayList::addAll(ArrayList& list)
 {
 	if (list.count == 0)
 	{
-		cout << "Ïðèñîåäèíÿåìûé ìàññèâ ïóñò\n";
+		cout << "ÐŸÑ€Ð¸ÑÐ¾ÐµÐ´Ð¸Ð½ÑÐµÐ¼Ñ‹Ð¹ Ð¼Ð°ÑÑÐ¸Ð² Ð¿ÑƒÑÑ‚\n";
 		return false;
 	}
 	for (int i = 0; i < list.count; ++i)
@@ -150,13 +150,13 @@ bool ArrayList::addAll(int index, ArrayList& list)
 {
 	if (list.count == 0)
 	{
-		cout << "Ïðèñîåäèíÿåìûé ìàññèâ ïóñò\n";
+		cout << "ÐŸÑ€Ð¸ÑÐ¾ÐµÐ´Ð¸Ð½ÑÐµÐ¼Ñ‹Ð¹ Ð¼Ð°ÑÑÐ¸Ð² Ð¿ÑƒÑÑ‚\n";
 		return false;
 	}
 
 	if (index < 0 || index > count)
 	{
-		cout << "Ââåäåí íåêîððåêòíûé èíäåêñ\n";
+		cout << "Ð’Ð²ÐµÐ´ÐµÐ½ Ð½ÐµÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ñ‹Ð¹ Ð¸Ð½Ð´ÐµÐºÑ\n";
 		return false;
 	}
 	while (capacity <= count + list.count)
@@ -190,11 +190,11 @@ bool ArrayList::contains(int element)
 	{
 		if (data[i] == element)
 		{
-			cout << "Ýëåìåíò ñîäåðæèòñÿ â ñïèñêå\n";
+			cout << "Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚ ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ñ‚ÑÑ Ð² ÑÐ¿Ð¸ÑÐºÐµ\n";
 			return true;
 		}
 	}
-	cout << "Ýëåìåíò íå ñîäåðæèòñÿ â ñïèñêå\n";
+	cout << "Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚ Ð½Ðµ ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ñ‚ÑÑ Ð² ÑÐ¿Ð¸ÑÐºÐµ\n";
 	return false;
 }
 
@@ -202,7 +202,7 @@ int ArrayList::get(int index)
 {
 	if (index < 0 || index >= count)
 	{
-		cout << "Ââåäåí íåêîððåêòíûé èíäåêñ\n";
+		cout << "Ð’Ð²ÐµÐ´ÐµÐ½ Ð½ÐµÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ñ‹Ð¹ Ð¸Ð½Ð´ÐµÐºÑ\n";
 		return -1;
 	}
 	return data[index];
