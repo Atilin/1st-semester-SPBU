@@ -7,20 +7,20 @@ using namespace std;
 
 void printMenu()
 {
-	cout << "ÌÅÍÞ" << endl;
-	cout << "0 - Âûõîä èç ïðîãðàììû" << endl;
-	cout << "1 - Âûâåñòè ìàññèâ íà ýêðàí" << endl;
-	cout << "2 - Äîáàâèòü ýëåìåíò" << endl;
-	cout << "3 - Äîáàâèòü ýëåìåíò â ïîçèöèþ" << endl;
-	cout << "4 - Óäàëèòü ýëåìåíò ïî èíäåêñó" << endl;
-	cout << "5 - Íàéòè ýëåìåíò" << endl;
-	cout << "6 - Äîáàâèòü íåñêîëüêî ýëåìåíòîâ" << endl;
-	cout << "7 - Äîáàâèòü íåñêîëüêî ýëåìåíòîâ, íà÷èíàÿ ñ íåêîòîðîé ïîçèöèè" << endl;
-	cout << "8 - Ïóñò ëè ìàññèâ?\n";
-	cout << "9 - Ïîìåíÿòü ìåñòàìè ýëåìåíòû ñ èíäåêñàìè\n";
-	cout << "10 - Î÷èñòèòü ìàññèâ\n";
-	cout << "11 - Íàéòè èíäåêñ ýëåìåíòà\n";
-	cout << "12 - Íàéòè ýëåìåíò ïî èíäåêñó\n";
+	cout << "ÐœÐ•ÐÐ®" << endl;
+	cout << "0 - Ð’Ñ‹Ñ…Ð¾Ð´ Ð¸Ð· Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹" << endl;
+	cout << "1 - Ð’Ñ‹Ð²ÐµÑÑ‚Ð¸ Ð¼Ð°ÑÑÐ¸Ð² Ð½Ð° ÑÐºÑ€Ð°Ð½" << endl;
+	cout << "2 - Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚" << endl;
+	cout << "3 - Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚ Ð² Ð¿Ð¾Ð·Ð¸Ñ†Ð¸ÑŽ" << endl;
+	cout << "4 - Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚ Ð¿Ð¾ Ð¸Ð½Ð´ÐµÐºÑÑƒ" << endl;
+	cout << "5 - ÐÐ°Ð¹Ñ‚Ð¸ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚" << endl;
+	cout << "6 - Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð²" << endl;
+	cout << "7 - Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð², Ð½Ð°Ñ‡Ð¸Ð½Ð°Ñ Ñ Ð½ÐµÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¹ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸" << endl;
+	cout << "8 - ÐŸÑƒÑÑ‚ Ð»Ð¸ Ð¼Ð°ÑÑÐ¸Ð²?\n";
+	cout << "9 - ÐŸÐ¾Ð¼ÐµÐ½ÑÑ‚ÑŒ Ð¼ÐµÑÑ‚Ð°Ð¼Ð¸ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹ Ñ Ð¸Ð½Ð´ÐµÐºÑÐ°Ð¼Ð¸\n";
+	cout << "10 - ÐžÑ‡Ð¸ÑÑ‚Ð¸Ñ‚ÑŒ Ð¼Ð°ÑÑÐ¸Ð²\n";
+	cout << "11 - ÐÐ°Ð¹Ñ‚Ð¸ Ð¸Ð½Ð´ÐµÐºÑ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°\n";
+	cout << "12 - ÐÐ°Ð¹Ñ‚Ð¸ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚ Ð¿Ð¾ Ð¸Ð½Ð´ÐµÐºÑÑƒ\n";
 }
 
 void processChoice(ArrayList& a, int choice)
@@ -29,7 +29,7 @@ void processChoice(ArrayList& a, int choice)
 	{
 	case 0:
 	{
-		cout << "×èêèáàìáîíè\n";
+		cout << "Ð§Ð¸ÐºÐ¸Ð±Ð°Ð¼Ð±Ð¾Ð½Ð¸\n";
 	}
 	break;
 	case 1:
@@ -39,7 +39,7 @@ void processChoice(ArrayList& a, int choice)
 	break;
 	case 2:
 	{
-		cout << "Ââåäèòå çíà÷åíèå ýëåìåíòà\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°\n";
 		int element = 0;
 		cin >> element;
 		a.add(element);
@@ -49,16 +49,16 @@ void processChoice(ArrayList& a, int choice)
 	{
 		int index = 0;
 		int element = 0;
-		cout << "Ââåäèòå èíäåêñ, íà ìåñòî êîòîðîãî õîòèòå âñòàâèòü ýëåìåíò\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð½Ð´ÐµÐºÑ, Ð½Ð° Ð¼ÐµÑÑ‚Ð¾ ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð³Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð²ÑÑ‚Ð°Ð²Ð¸Ñ‚ÑŒ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚\n";
 		cin >> index;
-		cout << "Ââåäèòå çíà÷åíèå ýëåìåíòà\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°\n";
 		cin >> element;
 		a.add(index, element);
 	}
 	break;
 	case 4:
 	{
-		cout << "Ââåäèòå èíäåêñ ýëåìåíòà\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð½Ð´ÐµÐºÑ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°\n";
 		int index = 0;
 		cin >> index;
 		a.remove(index);
@@ -66,7 +66,7 @@ void processChoice(ArrayList& a, int choice)
 	break;
 	case 5:
 	{
-		cout << "Ââåäèòå çíà÷åíèå ýëåìåíòà\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°\n";
 		int element = 0;
 		cin >> element;
 		a.contains(element);
@@ -75,7 +75,7 @@ void processChoice(ArrayList& a, int choice)
 	case 6:
 	{
 		ArrayList list;
-		cout << "Ââåäèòå ïîñëåäîâàòåëüíîñòü, çàâåðøèòå ââîä íóëåì\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚ÑŒ, Ð·Ð°Ð²ÐµÑ€ÑˆÐ¸Ñ‚Ðµ Ð²Ð²Ð¾Ð´ Ð½ÑƒÐ»ÐµÐ¼\n";
 		int x = 0;
 		cin >> x;
 		while (x != 0)
@@ -89,7 +89,7 @@ void processChoice(ArrayList& a, int choice)
 	case 7:
 	{
 		ArrayList list;
-		cout << "Ââåäèòå ïîñëåäîâàòåëüíîñòü, çàâåðøèòå ââîä íóëåì\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚ÑŒ, Ð·Ð°Ð²ÐµÑ€ÑˆÐ¸Ñ‚Ðµ Ð²Ð²Ð¾Ð´ Ð½ÑƒÐ»ÐµÐ¼\n";
 		int x = 0;
 		cin >> x;
 		while (x != 0)
@@ -97,7 +97,7 @@ void processChoice(ArrayList& a, int choice)
 			list.add(x);
 			cin >> x;
 		}
-		cout << "Ââåäèòå èíäåêñ\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð½Ð´ÐµÐºÑ\n";
 		int index = 0;
 		cin >> index;
 		a.addAll(index, list);
@@ -110,10 +110,10 @@ void processChoice(ArrayList& a, int choice)
 	break;
 	case 9:
 	{
-		cout << "Ââåäèòå èíäåêñ ïåðâîãî ýëåìåíòà\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð½Ð´ÐµÐºÑ Ð¿ÐµÑ€Ð²Ð¾Ð³Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°\n";
 		int index1 = 0;
 		cin >> index1;
-		cout << "Ââåäèòå èíäåêñ âòîðîãî ýëåìåíòà\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð½Ð´ÐµÐºÑ Ð²Ñ‚Ð¾Ñ€Ð¾Ð³Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°\n";
 		int index2 = 0;
 		cin >> index2;
 		a.swap(index1, index2);
@@ -126,7 +126,7 @@ void processChoice(ArrayList& a, int choice)
 	break;
 	case 11:
 	{
-		cout << "Ââåäèòå çíà÷åíèå ýëåìåíòà\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°\n";
 		int element;
 		cin >> element;
 		cout << a.indexOf(element) << endl;
@@ -134,7 +134,7 @@ void processChoice(ArrayList& a, int choice)
 	break;
 	case 12:
 	{
-		cout << "Ââåäèòå èíäåêñ\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð½Ð´ÐµÐºÑ\n";
 		int index = 0;
 		cin >> index;
 		cout << a.get(index) << endl;
