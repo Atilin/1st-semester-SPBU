@@ -53,7 +53,10 @@ void processChoice(ArrayList& a, int choice)
 		cin >> index;
 		cout << "Введите значение элемента\n";
 		cin >> element;
-		a.add(index, element);
+		if (a.add(index, element) == 0)
+		{
+			cout << "Введен некорректный индекс\n";
+		}
 	}
 	break;
 	case 4:
@@ -61,7 +64,8 @@ void processChoice(ArrayList& a, int choice)
 		cout << "Введите индекс элемента\n";
 		int index = 0;
 		cin >> index;
-		a.remove(index);
+		if (a.remove(index) == false)
+			cout << "Нечего удалять или введен некорректный индекс\n";
 	}
 	break;
 	case 5:
@@ -69,7 +73,15 @@ void processChoice(ArrayList& a, int choice)
 		cout << "Введите значение элемента\n";
 		int element = 0;
 		cin >> element;
-		a.contains(element);
+		if (a.contains(element) == true)
+		{
+			cout << "Элемент содержится в списке\n";
+		}
+		else
+		{
+
+			cout << "Элемент не содержится в списке\n";
+		}
 	}
 	break;
 	case 6:
@@ -100,12 +112,16 @@ void processChoice(ArrayList& a, int choice)
 		cout << "Введите индекс\n";
 		int index = 0;
 		cin >> index;
-		a.addAll(index, list);
+		if (a.addAll(index, list) == false)
+			cout << "Присоединяемый массив пуст или введен некорректный индекс\n";
 	}
 	break;
 	case 8:
 	{
-		a.isEmpty();
+		if (a.isEmpty() != 0)
+			cout << "Массив пуст\n";
+		else
+			cout << "Массив не пуст\n";
 	}
 	break;
 	case 9:
@@ -116,7 +132,8 @@ void processChoice(ArrayList& a, int choice)
 		cout << "Введите индекс второго элемента\n";
 		int index2 = 0;
 		cin >> index2;
-		a.swap(index1, index2);
+		if (a.swap(index1, index2) == false)
+			cout << "Введен некорректный индекс\n";
 	}
 	break;
 	case 10:
@@ -137,7 +154,14 @@ void processChoice(ArrayList& a, int choice)
 		cout << "Введите индекс\n";
 		int index = 0;
 		cin >> index;
-		cout << a.get(index) << endl;
+		if (a.get(index) == -1)
+		{
+			cout << "Введен некорректный индекс\n";
+		}
+		else
+		{
+			cout << a.get(index) << endl;;
+		}
 	}
 	break;
 	}
