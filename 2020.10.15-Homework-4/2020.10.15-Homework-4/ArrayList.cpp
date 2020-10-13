@@ -38,13 +38,7 @@ void expand(int*& data, int& capacity)
 
 bool ArrayList::isEmpty()
 {
-	if (count == 0)
-	{
-		cout << "Массив пуст\n";
-		return true;
-	}
-	cout << "Массив не пуст\n";
-	return false;
+	return count == 0;
 }
 
 void ArrayList::print()
@@ -68,12 +62,10 @@ bool ArrayList::remove(int index)
 {
 	if (count == 0)
 	{
-		cout << "Нечего удалять\n";
 		return false;
 	}
 	if (index < 0 || index >= count)
 	{
-		cout << "Введен некорректный индекс\n";
 		return false;
 	}
 	for (int i = index + 1; i < count; ++i)
@@ -89,7 +81,6 @@ int ArrayList::swap(int index1, int index2)
 {
 	if (index1 < 0 || index1 >= count || index2 < 0 || index2 >= count)
 	{
-		cout << "Введен некорректный индекс\n";
 		return false;
 	}
 	int x = 0;
@@ -115,7 +106,6 @@ bool ArrayList::add(int index, int element)
 
 	if (index < 0 || index > count)
 	{
-		cout << "Введен некорректный индекс\n";
 		return false;
 	}
 	for (int i = count; i > index; --i)
@@ -131,7 +121,6 @@ bool ArrayList::addAll(ArrayList& list)
 {
 	if (list.count == 0)
 	{
-		cout << "Присоединяемый массив пуст\n";
 		return false;
 	}
 	for (int i = 0; i < list.count; ++i)
@@ -150,13 +139,10 @@ bool ArrayList::addAll(int index, ArrayList& list)
 {
 	if (list.count == 0)
 	{
-		cout << "Присоединяемый массив пуст\n";
 		return false;
 	}
-
 	if (index < 0 || index > count)
 	{
-		cout << "Введен некорректный индекс\n";
 		return false;
 	}
 	while (capacity <= count + list.count)
@@ -165,7 +151,7 @@ bool ArrayList::addAll(int index, ArrayList& list)
 	}
 	for (int i = count - 1; i >= index; --i)
 	{
-		data[i+list.count] = data[i];
+		data[i + list.count] = data[i];
 	}
 	for (int i = 0; i < list.count; ++i)
 	{
@@ -177,10 +163,6 @@ bool ArrayList::addAll(int index, ArrayList& list)
 
 void ArrayList::clear()
 {
-	for (int i = 0; i < count; ++i)
-	{
-		data[i] = 0;
-	}
 	count = 0;
 }
 
@@ -190,11 +172,9 @@ bool ArrayList::contains(int element)
 	{
 		if (data[i] == element)
 		{
-			cout << "Элемент содержится в списке\n";
 			return true;
 		}
 	}
-	cout << "Элемент не содержится в списке\n";
 	return false;
 }
 
@@ -202,7 +182,6 @@ int ArrayList::get(int index)
 {
 	if (index < 0 || index >= count)
 	{
-		cout << "Введен некорректный индекс\n";
 		return -1;
 	}
 	return data[index];
