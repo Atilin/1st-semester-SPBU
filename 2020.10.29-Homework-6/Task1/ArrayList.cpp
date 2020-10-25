@@ -2,9 +2,9 @@
 
 ArrayList::ArrayList()
 {
-	count = 7;
+	count = 0;
 	capacity = 10;
-	data = new int[capacity] {1, 2, 3, 4, 5, 6, 7};
+	data = new int[capacity];
 	str = nullptr;
 }
 

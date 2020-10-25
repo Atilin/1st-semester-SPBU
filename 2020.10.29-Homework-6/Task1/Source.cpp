@@ -53,6 +53,7 @@ void processChoice(int choice, ArrayList& list)
 		else
 			cout << "Массив несимметричен" << endl;
 	}
+	break;
 	case 4:
 	{
 		int n = 0;
@@ -63,12 +64,57 @@ void processChoice(int choice, ArrayList& list)
 		{
 			n = list.length() + n;
 		}
-		ArrayList listCopy(list);
-		for (int i = 0; i < listCopy.length(); ++i)
+
+		for (int i = 0; i < n; ++i)
 		{
-			cout << list.get(i) << ' ' << listCopy.get((i + n) % listCopy.length()) << endl;
-			list.set(i, listCopy.get((i + n) % listCopy.length()));
+			for (int j = list.length() - 1; j > 0; --j)
+			{
+				list.swap(j, j - 1);
+			}
 		}
+		cout << list.toString() << endl;
+	}
+	break;
+	case 5:
+	{
+		bool flag1 = false;
+		for (int k = 0; k < list.length(); ++k)
+		{
+			bool flag = true;
+			for (int i = 0, j = list.length() - 1; i < list.length() / 2; ++i, --j)
+			{
+				if (i == k)
+				{
+					i++;
+					if (i == list.length())
+					{
+						break;
+					}
+				}
+				if (j == k)
+				{
+					j--;
+					if (j < 0)
+					{
+						break;
+					}
+				}
+				if (list.get(i) != list.get(j))
+				{
+					flag = false;
+					break;
+				}
+			}
+			if (flag == true)
+			{
+				flag1 = true;
+				break;
+			}
+		}
+		if (flag1 == true)
+			cout << "Массив может быть симметричным" << endl;
+		else
+			cout << "Массив не может быть симметричным" << endl;
 	}
 	break;
 	}
