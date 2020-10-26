@@ -12,8 +12,9 @@ ArrayList::ArrayList(const ArrayList& list)
 {
 	count = list.count;
 	capacity = list.capacity;
-	data = list.data;
+	data = new int[capacity];
 	str = nullptr;
+	for (int i = 0; i < count; data[i] = list.data[i], ++i);
 }
 
 ArrayList::~ArrayList()
