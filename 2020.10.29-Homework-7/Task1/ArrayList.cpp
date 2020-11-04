@@ -212,6 +212,8 @@ ArrayList& ArrayList::operator=(const ArrayList& list)
 	{
 		count = list.count;
 		capacity = list.capacity;
+		delete[] data;
+		data = new int[capacity];
 		for (int i = 0; i < list.count; ++i)
 		{
 			data[i] = list.data[i];
