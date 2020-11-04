@@ -9,7 +9,7 @@ private:
 	int* data;
 
 public:
-	ArrayList(int capacity = 10) : count(0), capacity(capacity), data(new int[capacity]) {}
+	ArrayList();
 	ArrayList(const ArrayList& list);
 	~ArrayList();
 
