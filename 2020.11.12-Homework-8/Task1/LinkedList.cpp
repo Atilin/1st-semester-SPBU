@@ -1,6 +1,4 @@
 #include "LinkedList.h"
-#include <iostream>
-using namespace std;
 
 LinkedList::LinkedList(const LinkedList& list)
 {
