@@ -15,13 +15,15 @@ LinkedList::LinkedList(const LinkedList& list)
 
 LinkedList::~LinkedList()
 {
-	Node* temp = head;
-	while (temp != nullptr)
+	while (!isEmpty())
 	{
-		Node* node = temp;
-		temp = temp->next;
-		delete node;
+		extractHead();
 	}
+}
+
+bool LinkedList::isEmpty()
+{
+	return (head == nullptr);
 }
 
 bool LinkedList::indexValid(int index)
@@ -179,11 +181,10 @@ int LinkedList::extractHead()
 		addToHead(0);
 		return head->data;
 	}
-	Node* newHead = head->next;
+	Node* node = head;
 	int oldHead = head->data;
-	delete head;
-	Node* head = newHead;
-	delete newHead;
+	head = head->next;
+	delete node;
 	return oldHead;
 }
 
@@ -194,35 +195,41 @@ int LinkedList::extractTail()
 		addToTail(0);
 		return tail->data;
 	}
-	int oldTail = tail->data;
-	Node* newTail = head;
-	for (int i = 0; i < count - 2; ++i)
+	if (head->next == nullptr)
 	{
-		newTail = newTail->next;
+		delete head;
+		head == nullptr;
 	}
-	delete tail;
-	Node* tail = newTail;
-	delete newTail;
+	Node* node = head;
+	while (node->next != nullptr && node->next->next != nullptr)
+	{
+		node = node->next;
+	}
+	int oldTail = node->data;
+	delete node->next;
+	node->next = nullptr;
 	return oldTail;
 }
 
 int LinkedList::extract(int index)
 {
+	if (head == nullptr)
+	{
+		return -1;
+	}
 	if (!indexValid(index))
 	{
 		return -1;
 	}
-	int oldElement = get(index);
-
-	Node* temp = head;
-	for (int i = 0; i < index-1; ++i)
+	Node* node = head;
+	for (int i = 0; i < index - 1; ++i)
 	{
-		temp = temp->next;
+		node = node->next;
 	}
-	Node* node = temp->next;
-	temp->next = node->next;
-	delete node;
-
+	Node* temp = node->next;
+	int oldElement = node->data;
+	node->next = node->next->next;
+	delete temp;
 	return oldElement;
 }
 

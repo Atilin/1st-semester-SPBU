@@ -25,9 +25,9 @@ int main()
 	list.add(2, 9);
 	cout << "add(2, 9)	" << list << endl;
 	list.add(3, 12);
-	cout << "add(2, 9)	" << list << endl;
+	cout << "add(3, 12)	" << list << endl;
 	list.add(1, 7);
-	cout << "add(2, 9)	" << list << endl;
+	cout << "add(1, 7)	" << list << endl;
 
 
 	cout << "get(5)	" << list.get(5) << endl;
@@ -37,9 +37,9 @@ int main()
 	list.set(4, 65);
 	cout << "set(4, 65)	" << list << endl;
 
-	cout << "list[2] = " << list[2] << endl;
+	cout << "list[2] = " << list[2] << " (output)" << endl;
 	list[1] = 12354;
-	cout << "list[1] = " << list[1] << endl;
+	cout << "list[1] = 12354	" << list << endl;
 	list[-12] = -12;
 	cout << "list[-12] = -12	" << list << endl;
 	/*list[-5] = 48;

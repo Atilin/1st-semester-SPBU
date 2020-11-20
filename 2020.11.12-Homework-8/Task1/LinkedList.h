@@ -25,6 +25,8 @@ private:
 public:
 	int length();
 
+	bool isEmpty();
+
 	bool addToHead(int element);
 
 	bool addToTail(int element);
