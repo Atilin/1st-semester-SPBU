@@ -45,7 +45,7 @@ int main()
 	/*list[-5] = 48;
 	cout << "list[-5] = 48	" << list << endl;*/
 	list[5123] = 1;
-	cout <<"list[5123] = 1	"<< list << endl;
+	cout << "list[5123] = 1	" << list << endl;
 
 	list.extractHead();
 	cout << "list.extractHead()	" << list << endl;
@@ -53,12 +53,18 @@ int main()
 	cout << "list.extractTail()	" << list << endl;
 	list.extract(2);
 	cout << "list.extract(2)	" << list << endl;
-	list += 122;
-	cout << "list += 122	" << list << endl;
+	list += 987;
+	cout << "list += 987	" << list << endl;
 	list -= 2;
 	cout << "list -= 2	" << list << endl;
 	list -= 1000;
 	cout << "list -= 1000	" << list << endl;
-	//LinkedList listCopy = list;
+
+	LinkedList listCopy = list;
+	cout << "listCopy = " << listCopy << endl;
+	cout << "indexOf(65) = " << list.indexOf(65) << endl;
+	cout << "indexOf(8) = " << list.indexOf(8) << endl;
+	cout << "contains(65) = " << list.contains(65) << endl;
+	cout << "contains(8) = " << list.contains(8) << endl;
 	return 0;
 }

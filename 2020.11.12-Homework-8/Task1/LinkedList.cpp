@@ -178,13 +178,21 @@ int LinkedList::extractHead()
 {
 	if (head == nullptr)
 	{
-		addToHead(0);
-		return head->data;
+		return -1;
 	}
-	Node* node = head;
+	if (head == tail)
+	{
+		int oldHead = head->data;
+		delete head;
+		tail = head = nullptr;
+		count = 0;
+		return oldHead;
+	}
 	int oldHead = head->data;
+	Node* node = head;
 	head = head->next;
 	delete node;
+	--count;
 	return oldHead;
 }
 
