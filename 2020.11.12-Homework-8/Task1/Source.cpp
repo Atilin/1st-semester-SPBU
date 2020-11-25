@@ -66,5 +66,33 @@ int main()
 	cout << "indexOf(8) = " << list.indexOf(8) << endl;
 	cout << "contains(65) = " << list.contains(65) << endl;
 	cout << "contains(8) = " << list.contains(8) << endl;
+
+	cout << "\n\n\nNOW LIST1 IS EMPTY\n\n\n";
+	
+	LinkedList list1;
+
+	cout << "get(0)	" << list1.get(0) << endl;
+	cout << "get(2)	" << list1.get(2) << endl;
+
+	cout << "list1[2] = " << list1[2] << " (output)" << endl;
+
+	list1.extractHead();
+	cout << "list1.extractHead()	" << list1 << endl;
+	list1.extractTail();
+	cout << "list1.extractTail()	" << list1 << endl;
+	list1.extract(2);
+	cout << "list1.extract(2)	" << list1 << endl;
+	list1 -= 2;
+	cout << "list1 -= 2	" << list1 << endl;
+	list1 -= 1000;
+	cout << "list1 -= 1000	" << list1 << endl;
+
+	LinkedList listCopy1 = list1;
+	cout << "listCopy1 = " << listCopy1 << endl;
+	cout << "indexOf(65) = " << list1.indexOf(65) << endl;
+	cout << "indexOf(8) = " << list1.indexOf(8) << endl;
+	cout << "contains(65) = " << list1.contains(65) << endl;
+	cout << "contains(8) = " << list1.contains(8) << endl;
+
 	return 0;
 }
