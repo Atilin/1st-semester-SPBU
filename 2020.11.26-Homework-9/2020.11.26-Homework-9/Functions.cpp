@@ -161,7 +161,7 @@ double readDouble(double& d)
 		{
 			temp = temp * 10 + (h[i] - '0');
 		}
-		else
+		else if (h[i] != '.')
 		{
 			cout << "Вы допустили невиданную в мире ошибку, разбирайтесь сами" << endl;
 			return 0;
